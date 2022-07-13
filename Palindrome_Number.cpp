@@ -27,3 +27,27 @@ public:
         return false;
     }
 };
+
+//One More Solution
+
+class Solution {
+public:
+    bool isPalindrome(int x) {                 //Writing Comments for First Iteration
+        long diviser=1;                        //For Example x=121
+        if(x<0){
+            return false;
+        }
+        while(x >= diviser*10){
+            diviser = diviser*10;              //Diviser will go to 100
+        }
+        while(x){
+            long a = x%10;                     //We'll Get 1
+            long b = x/diviser;                //We'll Get b=121/100   (b=1)
+            if(a != b){return false;}          //Checking a!=b (Which Means it is not Palindrome because First and Last digit is not Eqaul)
+            x = x%diviser;                     //Now 121 Will Become 21
+            x = x/10;                          //21/10 (Equal to 2)
+            diviser = diviser/100;             //we are dividing by 100 because in every Iteration we are removing 2 digits first and last
+        }
+        return true;
+    }
+};
